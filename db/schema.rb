@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_183728) do
+ActiveRecord::Schema.define(version: 2021_02_02_190024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,4 +27,20 @@ ActiveRecord::Schema.define(version: 2021_02_02_183728) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "villagers", force: :cascade do |t|
+    t.string "name"
+    t.text "description_villager"
+    t.string "specie"
+    t.string "gender"
+    t.string "personality"
+    t.string "image_villager"
+    t.string "image_house"
+    t.string "description_house"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_villagers_on_user_id"
+  end
+
+  add_foreign_key "villagers", "users"
 end
