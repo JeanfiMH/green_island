@@ -4,6 +4,7 @@ class VillagersController < ApplicationController
   end
   
   def show
+    
     @villager = Villager.find(params[:id])
   end
 
