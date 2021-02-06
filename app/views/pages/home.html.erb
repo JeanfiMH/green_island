@@ -11,27 +11,30 @@
 <!-- -- -- -- -- -- -- -- section new villagers -- -- -- -- -- -- -- -->
 
 <div class="container">
+
   <h3>Discover our new villagers</h3>
-  <div class="cards row">
+  <div class="cards row justify-content-center">
     <% @villagers.each do |villager| %>
-      <div class="card col-4 text-center">
+      <div class="card col-3 align-items-center p-4 m-1">
+        <%= image_tag(villager.image_villager, height: 100, class: "m-2") %>
         <p><%= villager.name %></p>
-        <%= link_to "see details", villager_path(villager) %>
+        <%= link_to "see details", villager_path(villager), class: "btn btn-warning rounded-pill" %>
       </div>
     <% end %>
   </div>
-  <%= link_to "see all our villagers", villagers_path %>
-</div>
+
+
+  <%= link_to "see all our villagers", villagers_path, class: "btn btn-primary" %>
 
 <!-- -- -- -- -- -- -- -- section 1 categorie villagers -- -- -- -- -- -- -- -->
 
-<div class="container">
   <h3>Our cat villagers </h3>
-  <div class="cards row">
+  <div class="cards row justify-content-center">
     <% @specie_villagers.each do |specie_villager| %>
-      <div class="card col-4 text-center">
+      <div class="card col-3 align-items-center p-4 m-1">
+        <%= image_tag(specie_villager.image_villager, height: 100, class: "m-2") %>
         <p><%= specie_villager.name %></p>
-        <a href="">See detail</a>
+        <%= link_to "see details", villager_path(specie_villager), class: "btn btn-warning" %>
       </div>
     <% end %>
   </div>

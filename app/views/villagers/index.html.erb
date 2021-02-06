@@ -1,4 +1,4 @@
-!-- -- -- -- -- -- -- -- banner -- -- -- -- -- -- -- -->
+<!-- -- -- -- -- -- -- -- banner -- -- -- -- -- -- -- -->
 
 <div class ="home-banner text-center">
   <div class="container">
@@ -10,12 +10,13 @@
 <!-- -- -- -- -- -- -- -- section all villagers -- -- -- -- -- -- -- -->
 
 <div class="container">
-  <h3> Our dear villagers</h3>
-  <div class="cards row">
+  <h3> Our all villagers</h3>
+  <div class="cards row justify-content-center">
     <% @villagers.each do |villager| %>
-      <div class="card col-4 text-center">
+      <div class="card col-3 align-items-center p-4 m-1">
+        <%= image_tag(villager.image_villager, height: 100, class: "m-2") %>
         <p><%= villager.name %></p>
-        <a href="">See detail</a>
+        <%= link_to "see details", villager_path(villager), class: "btn btn-warning rounded-pill" %>
       </div>
     <% end %>
   </div>
