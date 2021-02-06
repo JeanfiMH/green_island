@@ -6,39 +6,36 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# puts "Creating users"
+require 'open-uri'
+require 'json'
 
-tom = { name: "Tom nook", island_name: "Greenisland", email:"contact@tom_nook.fr", password:"villager" }
-leellou = { name: "Leellou", island_name: "Kokiri", email:"contact@leellou.fr", password:"villager" }
+puts "Cleaning database..."
 
-[ tom, leellou ].each do |attributes|
-  user = User.create!(attributes)
-  puts "Created #{user.name}"
-end
+Villager.destroy_all
+User.destroy_all
 
-puts "Creating villagers...."
+puts "Creating users..."
 
-bob = { name: "Bob", gender: "Male", specie: "Cat", personality: "Lazy" }
-poncho = { name: "Poncho", gender: "Male", specie: "Cub", personality: "Jock" }
-joey = { name: "Joey", gender: "Male", specie: "Duck", personality: "Lazy" }
-diana = { name: "Diana", gender: "Female", specie: "Deer", personality: "Snooty" }
-roald = { name: "Roald", gender: "Male", specie: "Penguin", personality: "Jock" }
-carmen = { name: "Carmen", gender: "Female", specie: "Rabbit", personality: "Peppy" }
-harry = { name: "Harry", gender: "Male", specie: "Hippo", personality: "Cranky" }
-pierce = { name: "Pierce", gender: "Male", specie: "Eagle", personality: "Jock" }
-tiffany = { name: "Tiffany", gender: "Female", specie: "Cat", personality: "Lazy" }
-paolo = { name: "Paolo", gender: "Male", specie: "Elephant", personality: "Lazy" }
-maddie = { name: "Maddie", gender: "Female", specie: "Dog", personality: "Peppy" }
-moe = { name: "Moe", gender: "Male", specie: "Cat", personality: "Lazy" }
-dizzy = { name: "Dizzy", gender: "Male", specie: "Elephant", personality: "Lazy" }
-opal = { name: "Opal", gender: "Female", specie: "Elephant", personality: "Snooty" }
-molly = { name: "Molly", gender: "Female", specie: "Duck", personality: "Normal" }
+User.create(name: "Tom nook", island_name: "Greenisland", email:"contact@tom_nook.fr", password:"villager")
+User.create(name: "Leellou", island_name: "Kokiri", email:"contact@leellou.fr", password:"villager")
 
-[ bob, poncho, joey, diana, roald, carmen, harry, pierce, tiffany, paolo, maddie, moe, dizzy, opal, molly ].each do |attributes|
-  villager = Villager.new(attributes)
-  villager.user = User.all.sample
-  villager.save!
-  puts "created #{villager.name}"
+puts "Creating villagers..."
+
+url = "https://api.nookipedia.com/villagers?game=nh&nhdetails=true&api_key=c245f893-848a-4727-8f83-0678661bd176"
+villagers_serialized = open(url).read
+villagers = JSON.parse(villagers_serialized)
+villagers = villagers.sample(30)
+
+villagers.each do |villager|
+  new_villager = Villager.new(name: villager["name"],
+                              image_villager: villager["nh_details"]["image_url"],
+                              gender: villager["gender"],
+                              specie: villager["species"],
+                              personality: villager["personality"],
+                              image_house: villager["nh_details"]["house_interior_url"],
+                              user: User.all.sample)
+  new_villager.save!
+  puts villager["name"]
 end
 
 puts "Finished!"
