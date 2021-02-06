@@ -41,18 +41,4 @@ molly = { name: "Molly", gender: "Female", specie: "Duck", personality: "Normal"
   puts "created #{villager.name}"
 end
 
-
-puts "Creating more villagers...."
-
-dizzy = { name: "Dizzy", gender: "Male", specie: "Elephant", personality: "Lazy" }
-opal = { name: "Opal", gender: "Female", specie: "Elephant", personality: "Snooty" }
-molly = { name: "Molly", gender: "Female", specie: "Duck", personality: "Normal" }
-
-[ dizzy, opal, molly ].each do |attributes|
-  villager = Villager.new(attributes)
-  villager.user = User.all.sample
-  villager.save!
-  puts "created #{villager.name}"
-end
-
 puts "Finished!"

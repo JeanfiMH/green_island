@@ -1,2 +1,38 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<!-- -- -- -- -- -- -- -- banner -- -- -- -- -- -- -- -->
+
+<div class ="home-banner text-center">
+  <div class="container">
+    <h1>Green island</h1>
+    <h2>Invite villagers to your island</h2>
+  </div>
+</div>
+
+<!-- -- -- -- -- -- -- -- section new villagers -- -- -- -- -- -- -- -->
+
+<div class="container">
+  <h3>Discover our new villagers</h3>
+  <div class="cards row">
+    <% @villagers.each do |villager| %>
+      <div class="card col-4 text-center">
+        <p><%= villager.name %></p>
+        <a href="">See detail</a>
+      </div>
+    <% end %>
+  </div>
+  <a href="">See all our villagers</a>
+</div>
+
+<!-- -- -- -- -- -- -- -- section 1 categorie villagers -- -- -- -- -- -- -- -->
+
+<div class="container">
+  <h3>Our cat villagers </h3>
+  <div class="cards row">
+    <% @specie_villagers.each do |specie_villager| %>
+      <div class="card col-4 text-center">
+        <p><%= specie_villager.name %></p>
+        <a href="">See detail</a>
+      </div>
+    <% end %>
+  </div>
+</div>
