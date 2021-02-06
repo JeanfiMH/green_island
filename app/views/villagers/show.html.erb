@@ -1,1 +1,36 @@
-<h1>No create</h1>
+<h1>villager.name</h1>
+
+<!-- navbar avec un container qui contient -->
+<div>
+  <div class="container d-flex justify-content-between" >
+    <img src="logo.png" alt="Green Island">
+    <div>
+      <p> Les raccourcis et le login </p>
+    </div>
+  </div>
+</div>
+
+<!-- un container qui contient -->
+<div class="container">
+  <!-- une div pour le villager -->
+  <div class="card-villager d-flex justify-content-between" >
+    <!-- une div pour les infos villager -->
+    <div class="card-villager-infos">
+      <%= <h3> villager.name</h3> %>
+      <%= <h2> villager.specie</h2> %>
+      <%= <h2> villager.gender</h2> %>
+      <%= <h2> villager.personality</h2> %>
+      <%= <h2> villager.description</h2> %>
+    </div>
+    <!-- une div pour la picture villager -->
+    <%= image_tag(villager.image_villager, height: 100 %>
+  </div>
+  <div class="card-house d-flex justify-content-between" >
+    <!-- une div pour la picture villager -->
+    <%= image_tag(villager.image_house, height: 100 %>
+    <!-- une div pour les infos de la house du villager -->
+    <div class="card-house-villager-infos">
+      <%= <h3> villager.description_house</h3> %>
+    </div>
+  </div>
+</div>
