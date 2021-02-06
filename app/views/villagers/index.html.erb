@@ -1,0 +1,22 @@
+!-- -- -- -- -- -- -- -- banner -- -- -- -- -- -- -- -->
+
+<div class ="home-banner text-center">
+  <div class="container">
+    <h1>Green island</h1>
+    <h2>Discover all villagers</h2>
+  </div>
+</div>
+
+<!-- -- -- -- -- -- -- -- section all villagers -- -- -- -- -- -- -- -->
+
+<div class="container">
+  <h3> Our dear villagers</h3>
+  <div class="cards row">
+    <% @villagers.each do |villager| %>
+      <div class="card col-4 text-center">
+        <p><%= villager.name %></p>
+        <a href="">See detail</a>
+      </div>
+    <% end %>
+  </div>
+</div>
