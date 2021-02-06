@@ -19,7 +19,6 @@ puts "Creating users..."
 User.create(name: "Tom nook", island_name: "Greenisland", email:"contact@tom_nook.fr", password:"villager")
 User.create(name: "Leellou", island_name: "Kokiri", email:"contact@leellou.fr", password:"villager")
 
-
 puts "Creating villagers..."
 
 url = "https://api.nookipedia.com/villagers?game=nh&nhdetails=true&api_key=c245f893-848a-4727-8f83-0678661bd176"
