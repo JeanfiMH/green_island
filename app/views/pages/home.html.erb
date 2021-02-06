@@ -16,11 +16,11 @@
     <% @villagers.each do |villager| %>
       <div class="card col-4 text-center">
         <p><%= villager.name %></p>
-        <a href="">See detail</a>
+        <%= link_to "see details", villager_path(villager) %>
       </div>
     <% end %>
   </div>
-  <a href="">See all our villagers</a>
+  <%= link_to "see all our villagers", villagers_path %>
 </div>
 
 <!-- -- -- -- -- -- -- -- section 1 categorie villagers -- -- -- -- -- -- -- -->
