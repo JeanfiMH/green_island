@@ -18,13 +18,22 @@
       <div class="card col-3 align-items-center p-4 m-1">
         <%= image_tag(villager.image_villager, height: 100, class: "m-2") %>
         <p><%= villager.name %></p>
-        <%= link_to "see details", villager_path(villager), class: "btn btn-warning rounded-pill" %>
+        <div class="d-flex">
+          <%= link_to "See details", villager_path(villager), class: "btn btn-warning rounded-pill" %>
+          <%= link_to "Edit", edit_villager_path(villager), class: "btn btn-warning rounded-pill"%>
+          <%= link_to "Delete", villagers_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning rounded-pill" %>
+
+        </div>
+
       </div>
     <% end %>
   </div>
 
+  <div class="d-flex justify-content-center">
+    <%= link_to "see all our villagers", villagers_path, class: "btn btn-primary" %>
+    <%= link_to "Create villager", new_villager_path(@villager), class: "btn btn-primary"%>
+  </div>
 
-  <%= link_to "see all our villagers", villagers_path, class: "btn btn-primary" %>
 
 <!-- -- -- -- -- -- -- -- section 1 categorie villagers -- -- -- -- -- -- -- -->
 
