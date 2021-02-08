@@ -9,7 +9,6 @@ class VillagersController < ApplicationController
 
   # GET /villagers/1
   def show
-
   end
 
   # GET /villagers/new
@@ -30,11 +29,9 @@ class VillagersController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
     @villager.update(villager_params)
     redirect_to villager_path(@villager)
   end
