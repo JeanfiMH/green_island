@@ -1,10 +1,13 @@
 
 <!-- -- -- -- -- -- -- -- banner -- -- -- -- -- -- -- -->
-
-<div class ="home-banner text-center">
-  <div class="container">
-    <h1>Green island</h1>
-    <h2>Invite villagers to your island</h2>
+<div class="home-banner" style="background-image: url(https://res.cloudinary.com/dl1kyce1c/image/upload/v1612914762/banner-home_nxkyix.png);">
+  <div class="container home-banner-content">
+    <h1>GreenIsland</h1>
+    <h2><em>Invite villagers</em> to your island</h2>
+    <div class="d-flex">
+      <%= link_to "See all our villagers", villagers_path, class: "btn btn-warning" %>
+      <%= link_to "Create villager", new_villager_path(@villager), class: "btn btn-warning"%>
+    </div>
   </div>
 </div>
 
@@ -13,37 +16,38 @@
 <div class="container">
 
   <h3>Discover our new villagers</h3>
-  <div class="cards row justify-content-center">
+  <div class="cards">
     <% @villagers.each do |villager| %>
-      <div class="card col-3 align-items-center p-4 m-1">
-        <%= image_tag(villager.image_villager, height: 100, class: "m-2") %>
+      <div class="card-category">
+
+        <% if villager.photo.attached? %>
+          <%= cl_image_tag villager.photo.key, height: 100, class: "m-2" %>
+        <% else %>
+          <%= image_tag(villager.image_villager, height: 100, class: "m-2" ) %>
+        <% end %>
         <p><%= villager.name %></p>
         <div class="d-flex">
           <%= link_to "See details", villager_path(villager), class: "btn btn-warning rounded-pill" %>
-          <%= link_to "Edit", edit_villager_path(villager), class: "btn btn-warning rounded-pill"%>
-          <%= link_to "Delete", villagers_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning rounded-pill" %>
-
+          <% if policy(villager).edit? %>
+            <%= link_to "Edit", edit_villager_path(villager), class: "btn btn-warning rounded-pill"%>
+          <% end %>
+          <% if policy(villager).destroy? %>
+            <%= link_to "Delete", villager, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning rounded-pill" %>
+          <% end %>
         </div>
-
       </div>
     <% end %>
   </div>
 
-  <div class="d-flex justify-content-center">
-    <%= link_to "see all our villagers", villagers_path, class: "btn btn-primary" %>
-    <%= link_to "Create villager", new_villager_path(@villager), class: "btn btn-primary"%>
-  </div>
-
-
 <!-- -- -- -- -- -- -- -- section 1 categorie villagers -- -- -- -- -- -- -- -->
 
-  <h3>Our cat villagers </h3>
-  <div class="cards row justify-content-center">
+  <h3>Our Ostrich villagers </h3>
+  <div class="cards">
     <% @specie_villagers.each do |specie_villager| %>
-      <div class="card col-3 align-items-center p-4 m-1">
-        <%= image_tag(specie_villager.image_villager, height: 100, class: "m-2") %>
+      <div class="card-category">
+        <%= image_tag(specie_villager.image_villager, height: 100, class: "m-2" ) %>
         <p><%= specie_villager.name %></p>
-        <%= link_to "see details", villager_path(specie_villager), class: "btn btn-warning" %>
+        <%= link_to "see details", villager_path(specie_villager), class: "btn btn-warning rounded-pill" %>
       </div>
     <% end %>
   </div>

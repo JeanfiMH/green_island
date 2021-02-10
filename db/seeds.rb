@@ -32,7 +32,7 @@ villagers.each do |villager|
                               gender: villager["gender"],
                               specie: villager["species"],
                               personality: villager["personality"],
-                              image_house: villager["nh_details"]["house_interior_url"],
+                              image_house: villager["nh_details"]["house_exterior_url"],
                               user: User.all.sample)
   new_villager.save!
   puts villager["name"]

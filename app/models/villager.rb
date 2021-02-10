@@ -1,4 +1,5 @@
 class Villager < ApplicationRecord
+
   GENDERS = ["Male", "Female"]
   validates :gender, inclusion: { in: GENDERS}
 
@@ -11,13 +12,14 @@ class Villager < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  has_one_attached :photo
 
   validates :name, uniqueness: true, presence: true
-  validates :image_villager, presence: true
+  # validates :image_villager, presence: true
   validates :specie, presence: true
   validates :gender, presence: true
   validates :personality, presence: true
-  validates :image_house, presence: true
+  # validates :image_house, presence: true
   # validates :description_villager, presence: true
   # validates :description_house, presence: true
 
