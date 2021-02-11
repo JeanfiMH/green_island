@@ -1,0 +1,16 @@
+<div class="banner">
+  <div class="container">
+    <h3>Book your villager</h3>
+  </div>
+</div>
+
+<div class="container">
+  <%= simple_form_for ([@villager, @booking]) do |f| %>
+    <%= f.label :start_date, "Start date" %>
+    <%= f.input :start_date %>
+    <%= f.label :end_date, "End date" %>
+    <%= f.input :end_date %>
+    <%= f.submit %>
+  <% end %>
+
+</div>
