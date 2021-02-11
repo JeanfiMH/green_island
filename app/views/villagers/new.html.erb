@@ -5,5 +5,15 @@
 </div>
 
 <div class="container">
-
+    <p>Info villager</p>
+    <%= simple_form_for [ @villager ] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :photo, as: :file %>
+      <%= f.input :specie, collection: Villager::SPECIES %>
+      <%= f.input :gender, collection: Villager::GENDERS %>
+      <%= f.input :personality, collection: Villager::PERSONALITIES %>
+      <p>Info house</p>
+      <%= f.input :image_house, as: :file %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
 </div>

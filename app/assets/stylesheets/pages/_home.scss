@@ -1,1 +1,28 @@
 // Specific CSS for your home-page
+
+body{
+  background-color: $ac-cream;
+  color: $ac-grey;
+}
+
+h1, h2, h3{
+  font-family: $ac-title-font
+}
+
+h1{
+  font-size: 56px;
+}
+
+h2{
+  font-size: 48px;
+}
+
+h3{
+  font-size: 32px;
+  margin: 24px 0;
+}
+
+p{
+  font-size: 18px;
+  font-family: $ac-body-font
+}

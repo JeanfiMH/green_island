@@ -1,20 +1,26 @@
 <!-- -- -- -- -- -- -- -- banner -- -- -- -- -- -- -- -->
 
-<div class ="home-banner text-center">
+<div class ="banner">
   <div class="container">
-    <h1>Green island</h1>
-    <h2>Discover all villagers</h2>
+    <h2>Discover all our villagers</h2>
   </div>
 </div>
 
-<!-- -- -- -- -- -- -- -- section all villagers -- -- -- -- -- -- -- -->
+<!-- -- -- -- -- -- -- -- Search form -- -- -- -- -- -- -- -->
+<div>
+</div>
+<!-- -- -- -- -- -- -- -- all villagers / result form -- -- -- -- -- -- -- -->
 
 <div class="container">
   <h3> Our all villagers</h3>
-  <div class="cards row justify-content-center">
+  <div class="cards">
     <% @villagers.each do |villager| %>
-      <div class="card col-3 align-items-center p-4 m-1">
-        <%= image_tag(villager.image_villager, height: 100, class: "m-2") %>
+      <div class="card-category">
+        <% if villager.photo.attached? %>
+          <%= cl_image_tag villager.photo.key, height: 100, class: "m-2" %>
+        <% else %>
+          <%= image_tag(villager.image_villager, height: 100, class: "m-2" ) %>
+        <% end %>
         <p><%= villager.name %></p>
         <%= link_to "see details", villager_path(villager), class: "btn btn-warning rounded-pill" %>
       </div>

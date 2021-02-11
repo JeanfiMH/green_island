@@ -1,0 +1,41 @@
+.home-banner{
+
+  background-size: cover;
+  background-position: center;
+  height: 600px
+}
+
+.home-banner-content{
+  padding: 100px;
+  color: white;
+
+    h2 {
+    margin-bottom: 48px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-weight: bold;
+    font-family: $ac-body-font;
+
+    }
+
+    a{
+      margin-right: 24px;
+      border-radius: 50px;
+      min-width: 160px;
+    }
+}
+
+.banner{
+  background-image: url('https://res.cloudinary.com/dl1kyce1c/image/upload/v1612967967/banner_ig7em4.png');
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
