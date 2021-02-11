@@ -9,6 +9,7 @@ class VillagersController < ApplicationController
 
   # GET /villagers/1
   def show
+    @booking = Booking.new
   end
 
   # GET /villagers/new

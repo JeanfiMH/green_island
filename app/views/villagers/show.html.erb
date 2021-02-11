@@ -20,6 +20,7 @@
 <div class="container">
   <!-- une div pour le villager -->
   <div class="card-villager d-flex justify-content-between" >
+    
     <!-- une div pour les infos villager -->
     <div class="card-villager-infos">
       <h3> <%= @villager.name %> </h3>
@@ -27,19 +28,37 @@
       <h2> <%= @villager.gender %></h2>
       <h2> <%=  @villager.personality %></h2>
     </div>
+
     <!-- une div pour la picture villager -->
     <% if @villager.photo.attached? %>
         <%= cl_image_tag @villager.photo.key, height: 300, class: "m-2" %>
     <% else %>
         <%= image_tag(@villager.image_villager, height: 300, class: "m-2" ) %>
     <% end %>
+
   </div>
+
   <div class="card-house d-flex justify-content-between" >
+
     <!-- une div pour la picture villager -->
+
+    <%= image_tag(@villager.image_house, height: 400, class: "m-2" ) %>
 
     <!-- une div pour les infos de la house du villager -->
     <div class="card-house-villager-infos">
+        
 
     </div>
+
+  </div>
+
+  <div class="container">
+    <%= simple_form_for ([@villager, @booking]) do |f| %>
+      <%= f.label :start_date, "Start date" %>
+      <%= f.input :start_date %>
+      <%= f.label :end_date, "End date" %>
+      <%= f.input :end_date %>
+      <%= f.submit %>
+    <% end %>
   </div>
 </div>
