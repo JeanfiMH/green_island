@@ -1,0 +1,18 @@
+<div class ="banner">
+  <div class="container">
+    <h2>All my Bookings</h2>
+  </div>
+</div>
+
+<div class="container">
+  <% @bookings.each do |booking| %>
+    <div class="card-booking">
+      <%= booking.villager.name %>
+      <%= booking.start_date %>
+      <%= booking.end_date %>
+
+      <%= link_to "Edit", edit_user_booking_path(current_user, booking), class: "btn btn-warning rounded-pill" %>
+      <%= link_to "Delete", user_booking_path(current_user, booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning rounded-pill" %>
+    </div>
+  <% end %>
+</div>

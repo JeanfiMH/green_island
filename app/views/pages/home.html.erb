@@ -45,7 +45,11 @@
   <div class="cards">
     <% @specie_villagers.each do |specie_villager| %>
       <div class="card-category">
-        <%= image_tag(specie_villager.image_villager, height: 100, class: "m-2" ) %>
+        <% if specie_villager.photo.attached? %>
+          <%= cl_image_tag specie_villager.photo.key, height: 100, class: "m-2" %>
+        <% else %>
+          <%= image_tag(specie_villager.image_villager, height: 100, class: "m-2" ) %>
+        <% end %>
         <p><%= specie_villager.name %></p>
         <%= link_to "see details", villager_path(specie_villager), class: "btn btn-warning rounded-pill" %>
       </div>
