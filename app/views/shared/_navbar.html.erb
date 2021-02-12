@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light">
   <div class="container">
     <%= link_to (root_path), class: "navbar-brand" do %>
-      <%= image_tag "logo.png" %>
+      <%= cl_image_tag "https://res.cloudinary.com/dl1kyce1c/image/upload/v1612909664/greenIsland-logo_jfyqwu.png" %>
     <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -13,6 +13,13 @@
         <li class="nav-item">
           <%= link_to "Mon compte", "#", class: "nav-link" %>
         </li>
+
+        <li class="nav-item">
+          <% if policy(Booking).index? %>
+            <%= link_to "My Bookings", user_bookings_path(current_user), class: "nav-link" %>
+          <% end %>
+        </li>
+
         <li class="nav-item">
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
