@@ -1,0 +1,61 @@
+<div class="banner">
+  <div class="container">
+    <h3>My profil</h3>
+  </div>
+</div>
+
+<div class="user profil">
+  <%= @user.name %>
+  <%= @user.island_name %>
+  <%= @user.island_image %>
+  <%= @user.island_description %>
+</div>
+
+<div>
+  <%= link_to "Edit", edit_user_registration_path %>
+</div>
+
+<div class="container">
+  <h3>My villagers</h3>
+  <div class="cards">
+    <% @my_villagers.each do |villager| %>
+      <div class="card-category">
+        <% if villager.photo.attached? %>
+          <%= cl_image_tag villager.photo.key, height: 100, class: "m-2" %>
+        <% else %>
+          <%= image_tag(villager.image_villager, height: 100, class: "m-2" ) %>
+        <% end %>
+        <p> <%= villager.name %> </p>
+        <div class="d-flex m-2">
+          <% if policy(villager).edit? %>
+            <%= link_to "Edit", edit_villager_path(villager), class: "btn btn-warning rounded-pill"%>
+          <% end %>
+          <% if policy(villager).destroy? %>
+            <%= link_to "Delete", villager, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning rounded-pill" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <h3>My villagers's booking</h3>
+  <div class="cards">
+    <% @bookings.each do |booking| %>
+    <div class="card-category">
+      <% if booking.villager.photo.attached? %>
+        <%= cl_image_tag villager.photo.key, height: 100, class: "m-2" %>
+      <% else %>
+        <%= image_tag(booking.villager.image_villager, height: 100, class: "m-2" ) %>
+      <% end %>
+      <div class="card-info text-center">
+        <p><%= booking.villager.name %></p>
+        <p>du <%= booking.start_date %></p>
+        <p>au <%= booking.end_date %></p>
+        <p>by <%= booking.user.name %></p>
+      </div>
+
+    </div>
+    <% end %>
+
+  </div>
+</div>

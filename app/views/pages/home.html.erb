@@ -28,12 +28,7 @@
         <p><%= villager.name %></p>
         <div class="d-flex">
           <%= link_to "See details", villager_path(villager), class: "btn btn-warning rounded-pill" %>
-          <% if policy(villager).edit? %>
-            <%= link_to "Edit", edit_villager_path(villager), class: "btn btn-warning rounded-pill"%>
-          <% end %>
-          <% if policy(villager).destroy? %>
-            <%= link_to "Delete", villager, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning rounded-pill" %>
-          <% end %>
+
         </div>
       </div>
     <% end %>
