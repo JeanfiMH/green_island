@@ -28,7 +28,7 @@
       <% end %>
     </div>
   </div>
-
+</div>
 
 
   <div class="card-house d-flex justify-content-between" >
@@ -36,10 +36,10 @@
     <!-- une div pour la picture villager -->
     <div class="card-house-villager-picture">
       <div class="card-villager-picture">
-        <% if @house.photo.attached? %>
-            <%= cl_image_tag @house.photo.key, width: 500, class: "m-2" %>
+        <% if @villager.house.count == 0 %>
+          <%= link_to 'Add house', new_villager_house_path(@villager) %>
         <% else %>
-           <%= link_to 'Add house', new_villager_house_path(@villager) %>
+           <%= cl_image_tag @house.photo.key, width: 500, class: "m-2" %>
         <% end %>
     </div>
 

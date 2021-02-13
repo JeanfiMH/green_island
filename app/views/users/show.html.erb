@@ -22,8 +22,6 @@
       <div class="card-category">
         <% if villager.photo.attached? %>
           <%= cl_image_tag villager.photo.key, height: 100, class: "m-2" %>
-        <% else %>
-          <%= image_tag(villager.image_villager, height: 100, class: "m-2" ) %>
         <% end %>
         <p> <%= villager.name %> </p>
         <div class="d-flex m-2">
@@ -43,9 +41,7 @@
     <% @bookings.each do |booking| %>
     <div class="card-category">
       <% if booking.villager.photo.attached? %>
-        <%= cl_image_tag villager.photo.key, height: 100, class: "m-2" %>
-      <% else %>
-        <%= image_tag(booking.villager.image_villager, height: 100, class: "m-2" ) %>
+        <%= cl_image_tag booking.villager.photo.key, height: 100, class: "m-2" %>
       <% end %>
       <div class="card-info text-center">
         <p><%= booking.villager.name %></p>

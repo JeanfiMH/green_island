@@ -12,8 +12,6 @@
       <%= f.input :specie, collection: Villager::SPECIES %>
       <%= f.input :gender, collection: Villager::GENDERS %>
       <%= f.input :personality, collection: Villager::PERSONALITIES %>
-      <p>Info house</p>
-      <%= f.input :image_house, as: :file %>
       <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
 </div>
