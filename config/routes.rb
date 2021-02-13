@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
     resources :villagers do
       resources :bookings, only: [ :new, :create ]
+      resources :houses, only: [ :new, :create ]
     end
 
     resources :users, only: [ :show, :edit, :update ] do

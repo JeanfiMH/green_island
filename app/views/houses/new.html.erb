@@ -1,0 +1,12 @@
+<div class="banner">
+  <div class="container">
+    <h3>Add house to your villager</h3>
+  </div>
+</div>
+
+<div class="container">
+  <%= simple_form_for ([@villager, @house]) do |f| %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit %>
+  <% end %>
+</div>

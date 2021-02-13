@@ -10,6 +10,9 @@ class VillagersController < ApplicationController
   # GET /villagers/1
   def show
     @booking = Booking.new
+    if @villager.house.count != 0
+      @house = @villager.house.first
+    end
   end
 
   # GET /villagers/new

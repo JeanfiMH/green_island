@@ -8,9 +8,11 @@
 
 require 'open-uri'
 require 'json'
+require 'pry-byebug'
 
 puts "Cleaning database..."
 
+House.destroy_all
 Villager.destroy_all
 User.destroy_all
 
@@ -25,16 +27,26 @@ url = "https://api.nookipedia.com/villagers?game=nh&nhdetails=true&api_key=c245f
 villagers_serialized = open(url).read
 villagers = JSON.parse(villagers_serialized)
 villagers = villagers.sample(30)
-
 villagers.each do |villager|
   new_villager = Villager.new(name: villager["name"],
-                              image_villager: villager["nh_details"]["image_url"],
                               gender: villager["gender"],
                               specie: villager["species"],
                               personality: villager["personality"],
-                              image_house: villager["nh_details"]["house_exterior_url"],
                               user: User.all.sample)
+
+
+  file = URI.open(villager["nh_details"]["image_url"])
+  new_villager.photo.attach(io: file, filename: 'house.png', content_type:"image/png" )
   new_villager.save!
+
+  house = House.create!(villager: new_villager)
+  # new_villager.house = house
+
+  file_house = URI.open(villager["nh_details"]["house_exterior_url"])
+  house.photo.attach(io: file_house, filename: 'house.png', content_type:"image/png" )
+
+
+
   puts villager["name"]
 end
 
