@@ -12,7 +12,7 @@ class Villager < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_many :bookings, dependent: :destroy
-  has_many :house
+  has_many :house, dependent: :destroy
   has_one_attached :photo
 
   validates :name, uniqueness: true, presence: true
