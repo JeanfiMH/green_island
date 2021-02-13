@@ -3,6 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @villagers = Villager.last(8)
-    @specie_villagers = Villager.where(specie: "Ostrich")
+    @specie_villagers = Villager.where(specie: "Mouse")
   end
 end
