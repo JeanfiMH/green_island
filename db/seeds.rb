@@ -8,7 +8,6 @@
 
 require 'open-uri'
 require 'json'
-require 'pry-byebug'
 
 puts "Cleaning database..."
 
