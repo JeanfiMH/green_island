@@ -7,13 +7,13 @@
 </div>
 
 <!-- un container qui contient -->
-<div class="card container">
+<div class="card container-show">
   <!-- une div pour le villager -->
   <div class="card-villager d-flex justify-content-between" >
 
     <!-- une div pour les infos villager -->
     <div class="card-villager-infos">
-      <h4> <%= @villager.name %> </h4>
+      <h4> <%= @villager.name %></h4>
       <p>specie: <%= @villager.specie %></p>
       <p>gender: <%= @villager.gender %></p>
       <p>personality: <%= @villager.personality %></p>
@@ -27,8 +27,8 @@
           <%= image_tag(@villager.image_villager, height: 300, class: "m-2" ) %>
       <% end %>
     </div>
+
   </div>
-</div>
 
 
   <div class="card-house d-flex justify-content-between" >
@@ -43,22 +43,21 @@
         <% end %>
     </div>
 
-    <!-- une div pour les infos de la house du villager -->
-    <div class="card-house-villager-infos">
+      <!-- une div pour les infos de la house du villager -->
+      <div class="card-house-villager-infos">
+      </div>
+
     </div>
-
   </div>
-
 </div>
 
 <div class="form-reservation">
   <div class="container">
+    <h4> Booking <%= @villager.name %></h4>
     <%= simple_form_for ([@villager, @booking]) do |f| %>
-      <%= f.label :start_date, "Start date" %>
       <%= f.input :start_date %>
-      <%= f.label :end_date, "End date" %>
       <%= f.input :end_date %>
-      <%= f.submit %>
+      <%= f.submit "Submit", class: "btn btn-warning" %>
     <% end %>
   </div>
 </div>
