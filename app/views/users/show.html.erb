@@ -3,17 +3,21 @@
     <h3>My profil</h3>
   </div>
 </div>
-
-<div class="user profil">
-  <%= @user.name %>
-  <%= @user.island_name %>
-  <%= @user.island_image %>
-  <%= @user.island_description %>
-</div>
-
+<div class="container">
+  <div class="user profil">
+    
+    <h4> I'm <%= @user.name %></h4>
+    <h4>I live in <%= @user.island_name %> ! </h4>
+    <br>
+    <%= @user.island_image %>
+    <%= @user.island_description %>
+  </div>
 <div>
-  <%= link_to "Edit", edit_user_registration_path %>
+  <%= link_to "Edit", edit_user_registration_path, class: "btn btn-warning rounded-pill" %>
+  <br>
 </div>
+</div>
+
 
 <div class="container">
   <h3>My villagers</h3>
